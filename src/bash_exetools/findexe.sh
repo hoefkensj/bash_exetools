@@ -28,9 +28,9 @@ EXAMPLES:\n
  	function _list(){
 
  		[[ "$DUP" == '0' ]] && FOUND=$(xargs -n1 echo  | awk '!seen[$0]++') || FOUND=$(xargs -n1 echo )
- 		[[ "$WRAP" == '1' ]] && xargs -n1 printf "%s$SEP" <<< $FOUND
+ 		[[ "$WRAP" == '1' ]] && xargs -n1 printf "%s$SEP" <<< "$FOUND"
  		# [[ "$WRAP" == '0' ]] && [[ $LINES == 0 ]] && columns <<< $FOUND
- 		[[ "$WRAP" == '0' ]] && xargs -n5 echo <<< $FOUND 
+ 		[[ "$WRAP" == '0' ]] && xargs -n5 echo <<< "$FOUND" 
 	}
 
 	case $1 in
