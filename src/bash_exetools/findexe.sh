@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 function _findexe(){
 	HELP="""
-use: $findexe   --help --list-duplicates -<#|t|c> --sep [separator] '<REGEX>'|[characters to match]\n
-    Bash search executables on this system.\n 
-ARGS:\n
-    --help                  Display this text\n
-    --sep                   Separator to use with -t(wrap) defaults to '   ' (3 spaces)\n
-    --list-duplicates       Do not filter out duplicate commands/binaries\n
-    -#                      Display 1 Command per line\n
-    -t    				    Wrap all commands in a single line separated by --sep\n
-    -c                      Columns, display commands in collumns (bug/broken)\n
-    \n
-EXAMPLES:\n
-	\n
-	findexe -# 'top$'       list all runnable things ending in the letters 'top' ,1 per line\n
-	findexe -t --sep ',''  	create a comma separated list(CSV) of all the possible commands on this system\n
-	findexe s ctl    	    list all commands that have an s somewhere in the name followed by ctl later in the name (this would match sysctl systemdctl ,...)\n
+use: $findexe   --help --list-duplicates -<#|t|c> --sep [separator] '<REGEX>'|[characters to match]
+    Bash search executables on this system. 
+ARGS:
+    --help                  Display this text
+    --sep                   Separator to use with -t(wrap) defaults to '   ' (3 spaces)
+    --list-duplicates       Do not filter out duplicate commands/binaries
+    -#                      Display 1 Command per line
+    -t    				    Wrap all commands in a single line separated by --sep
+    -c                      Columns, display commands in collumns (bug/broken)
+    
+EXAMPLES:
+	
+	findexe -# 'top$'       list all runnable things ending in the letters 'top' ,1 per line
+	findexe -t --sep ',''  	create a comma separated list(CSV) of all the possible commands on this system
+	findexe s ctl    	    list all commands that have an s somewhere in the name followed by ctl later in the name (this would match sysctl systemdctl ,...)
 """
 
 	function _findexs(){
