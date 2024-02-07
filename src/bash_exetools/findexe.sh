@@ -35,7 +35,7 @@ EXAMPLES:\n
 
 	case $1 in
 		--help*)
-				printf $HELP && exit
+				echo "$HELP" && exit
 		;;
 		--sep*)
 			shift 1 && export SEP=$1 &&  _findexe $@
