@@ -20,7 +20,7 @@ EXAMPLES:\n
 
 	function _findexs(){
 		ARGS=$(echo "$@" | xargs printf -- '.*?%s') 
-		compgen -A function -bcak | grep  -Ei "$ARGS.*?\$" |rg --color=always $@
+		compgen -A function -bcak | grep  -Ei "$ARGS.*?\$" 
 	}
  	function _item(){
  		_findexs $@ | sort | xargs -n1 echo
