@@ -1,0 +1,104 @@
+#!/usr/bin/env python
+
+
+import base64
+import os
+import shlex
+import subprocess
+from subprocess import Popen, PIPE, getoutput
+import sys
+from pathlib import Path
+from os import system,chdir
+
+
+
+
+def hasMakeFile(P):
+	print([*P.glob('*')])
+	if  'Makefile' in [f.name for f in [*P.glob('*')]]:
+		ret=[*P.glob('*')][[f.name for f in [*P.glob('*')]].index('Makefile')]
+	else:
+		ret=None
+	return ret
+
+def getPkgPath():
+	script=Path(__file__)
+	folder=script.parent
+	return folder
+
+def getPkgName():
+	print(hasMakeFile(getPkgPath()))
+
+	makefile=Path(getPkgPath(),'Makefile')   
+	with open(makefile,'r') as f:
+		for line in f:
+			print(line)
+			if 'NAME' in line:
+				nameline=line
+				break
+	name=nameline.split('=')[-1]
+	return name
+
+
+
+def ask_passwd(PKGNAME):
+
+                                                  
+	cmd = 'zenity --password --title="{PKGNAME} --------------------\nInstaller Requires ROOT(sudo) Priveleges." --timeout=0'.format(PKGNAME=PKGNAME)
+	password = subprocess.run(cmd, shell=True, capture_output=True, universal_newlines=True).stdout
+	passbytes = password.encode('ascii')
+	b64_bytes = base64.b64encode(passbytes)
+	b64_pass = b64_bytes.decode('ascii')
+	os.environ['INSTALLER_STORE'] = b64_pass
+	return password
+
+
+def env_passwd():
+	base64_message = os.environ.get('INSTALLER_STORE')
+	base64_bytes = base64_message.encode('ascii')
+	message_bytes = base64.b64decode(base64_bytes)
+	passw = message_bytes.decode('ascii')
+	return passw
+
+pkgpath=getPkgPath()
+print(pkgpath)
+pkgname=getPkgName()
+print(pkgname)
+pw=ask_passwd(pkgname)
+print(env_passwd())
+os.chdir(pkgpath)
+cmd='make install'
+sudo=f'echo {pw} | / usr/bin/env bash sudo -S {cmd}'
+su=f'echo {pw} | su -c {cmd}'
+result='Install Successfull:\n - findexe :\n\tFind cmd with letters \n -lsexe :\n\tList all known commands'
+try:
+	subprocess.run(sudo, shell=True, capture_output=True, universal_newlines=True).stdout
+except Exeption as first:
+	try:
+		subprocess.run(su, shell=True, capture_output=True, universal_newlines=True).stdout
+	except Exception as second:
+		fail = 'Failed: \n {first} \n {second} \n'
+		cmd = 'zenity --error --title="{PKGNAME} --------------------\n" --text="{result}" '.format(PKGNAME=pkgname,result=fail)
+		subprocess.run(cmd, shell=True, capture_output=True, universal_newlines=True).stdout
+		sys.exit()
+
+
+cmd = 'zenity --info --title="{PKGNAME}" --text="{result}" '.format(PKGNAME=pkgname,result=result)
+subprocess.run(cmd, shell=True, capture_output=True, universal_newlines=True).stdout
+sys.exit()
+# print(os.geteuid)
+
+
+
+
+
+
+
+
+
+
+	
+#
+# def install():
+# 	P=getPath()
+# 	if hasMakeFile():
