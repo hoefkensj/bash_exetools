@@ -4,7 +4,7 @@
 
 ## Scripts
 
-### findexe.sh
+### findexe
 `findexe.sh` helps locate executable commands that match a given pattern. It supports multiple search modes and formatting options.
 
 #### Features
@@ -20,9 +20,8 @@ findexe -t --sep ','            # Create a CSV of all executables
 findexe s ctl                   # Find commands containing 's' and 'ctl'
 ```
 
-### lsexe.sh
-`lsexe.sh` lists all executable commands, aliases, built-ins, functions, and keywords available on the system.
-
+### lsexe
+`lsexe` (a wrapper around compgen that cleans up the output al little and makes it easier to digest )
 #### Features
 - List aliases, built-ins, commands, functions, and keywords.
 - Supports filtering by type (aliases, built-ins, commands, etc.).
@@ -31,7 +30,6 @@ findexe s ctl                   # Find commands containing 's' and 'ctl'
 ```sh
 lsexe -A                      # List all available executables
 lsexe -a                      # Show only aliases
-
 ```
 
 ## Requirements/Depencies
@@ -45,24 +43,15 @@ in the folder where you keep 3rd party git repo's (or your ~/Downloads ~/  or /t
 ```sh
 git clone https://github.com/hoefkensj/bash_exetools.git
 cd bash_exetools
-```
-Run install.run (from your gui) or :
-```sh
-./install.run
-```
-Alternatively:
-```sh
-sudo make install
+./install.run      # or #      sudo make install
 ```
 ## To Uninstall:
-from the  bash_exetools folder issue:
 ```sh
+# from bash_exetools folder
 sudo make uninstall
 ```
 
 
-## License
-This script is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details.
 
 ## Contributing
 Pull requests and issues are welcome. If you find a bug or have a feature request, please open an issue on the [GitHub repository](https://github.com/hoefkensj/bash_exetools).
