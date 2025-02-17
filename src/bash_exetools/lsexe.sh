@@ -16,6 +16,8 @@ EXAMPLES:
 	lsexe -a > ~/.bashrc_aliasses    store all kown aliasses in a bashrc file.
 """
 	function lscompgen(){
+                source /etc/profile &>/dev/null
+		source /etc/bash/bashrc $>/dev/null
 		echo "################# ${1} #################"
 		compgen "${2}${3}"
 		echo "############################################"
