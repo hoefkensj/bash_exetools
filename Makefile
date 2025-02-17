@@ -1,6 +1,6 @@
 NAME=Bash : EXE-Tools
 PKG_NAME=bash_exetools
-SRC=src/${NAME}
+SRC=src/${PKG_NAME}
 DSTOPT=/opt/local/scripts
 BINOPT=/opt/local/shell
 DSTUSR=/usr/local/scripts
