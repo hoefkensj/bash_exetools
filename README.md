@@ -1,45 +1,5 @@
 # Bash EXE-Tools
-
-`Bash EXE-Tools` is a collection of Bash scripts designed to help users find and list executable commands on their system. It consists of two scripts: `findexe.sh` and `lsexe.sh`, along with a `Makefile` for installation.
-
-## Scripts
-
-### findexe
-`findexe.sh` helps locate executable commands that match a given pattern. It supports multiple search modes and formatting options.
 ![image](https://github.com/user-attachments/assets/6ae79aaa-3df3-4c46-830a-d4d613b1b98d)
-
-#### Features
-- Search for executables using regex or character matching.
-- Display results in various formats: one per line, wrapped in a single line, or column view.
-- Optionally include duplicate commands.
-
-#### Usage
-```sh
-findexe --help                  # Display help message
-findexe -# 'top$'               # List all executables ending in 'top', one per line
-findexe -t --sep ','            # Create a CSV of all executables
-findexe s ctl                   # Find commands containing 's' and 'ctl'
-```
-
-### lsexe
-`lsexe` (a wrapper around compgen that cleans up the output al little and makes it easier to digest )
-![image](https://github.com/user-attachments/assets/0562d82a-a992-496f-9a05-5a6a2e0b8739)
-
-#### Features
-- List aliases, built-ins, commands, functions, and keywords.
-- Supports filtering by type (aliases, built-ins, commands, etc.).
-
-#### Usage
-```sh
-lsexe -A                      # List all available executables
-lsexe -a                      # Show only aliases
-```
-
-## Requirements/Depencies
-- `bash` 
-- `compgen` and `grep` 
-
-  
 ## Installation
 Clone the repository, enter the directory, and run `make install` as root or using `sudo`:
 in the folder where you keep 3rd party git repo's (or your ~/Downloads ~/  or /tmp ) folder: 
@@ -53,6 +13,42 @@ cd bash_exetools
 # from bash_exetools folder
 sudo make uninstall
 ```
+
+## findexe
+`findexe.sh` helps locate executable commands that match a given pattern. It supports multiple search modes and formatting options.
+
+
+### Features
+- Search for executables using regex or character matching.
+- Display results in various formats: one per line, wrapped in a single line, or column view.
+- Optionally include duplicate commands.
+
+### Usage
+```sh
+findexe --help                  # Display help message
+findexe -# 'top$'               # List all executables ending in 'top', one per line
+findexe -t --sep ','            # Create a CSV of all executables
+findexe s ctl                   # Find commands containing 's' and 'ctl'
+```
+
+## lsexe
+`lsexe` (a wrapper around compgen that cleans up the output al little and makes it easier to digest )
+### Features
+- List aliases, built-ins, commands, functions, and keywords.
+- Supports filtering by type (aliases, built-ins, commands, etc.).
+
+### Usage
+```sh
+lsexe -A                      # List all available executables
+lsexe -a                      # Show only aliases
+```
+
+## Requirements/Depencies
+- `bash` 
+- `compgen` and `grep` 
+![image](https://github.com/user-attachments/assets/0562d82a-a992-496f-9a05-5a6a2e0b8739)
+  
+
 
 
 
