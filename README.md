@@ -34,12 +34,15 @@ lsexe -a                      # Show only aliases
 
 ```
 
+## Requirements/Depencies
+- `bash` 
+- `compgen` and `grep` 
+
+  
 ## Installation
 Clone the repository, enter the directory, and run `make install` as root or using `sudo`:
+in the folder where you keep 3rd party git repo's (or your ~/Downloads ~/  or /tmp ) folder: 
 ```sh
-INSTALLDIR="/opt/local/scripts/"
-sudo mkdir -p "${INSTALLDIR}" && sudo chmod 777 "${INSTALLDIR}"  && cd  "${INSTALLDIR}"
-unset INSTALLDIR
 git clone https://github.com/hoefkensj/bash_exetools.git
 cd bash_exetools
 ```
@@ -52,18 +55,11 @@ Alternatively:
 sudo make install
 ```
 ## To Uninstall:
-from the INSTALLDIR folder issue:
+from the  bash_exetools folder issue:
 ```sh
 sudo make uninstall
-cd ..
+```
 
-
-
-
-
-## Requirements
-- Bash (pre-installed on most Linux distributions and macOS)
-- Standard UNIX utilities like `compgen` and `grep`
 
 ## License
 This script is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details.
