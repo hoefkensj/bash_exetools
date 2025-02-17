@@ -6,6 +6,7 @@
 
 ### findexe
 `findexe.sh` helps locate executable commands that match a given pattern. It supports multiple search modes and formatting options.
+![image](https://github.com/user-attachments/assets/6ae79aaa-3df3-4c46-830a-d4d613b1b98d)
 
 #### Features
 - Search for executables using regex or character matching.
@@ -22,6 +23,8 @@ findexe s ctl                   # Find commands containing 's' and 'ctl'
 
 ### lsexe
 `lsexe` (a wrapper around compgen that cleans up the output al little and makes it easier to digest )
+![image](https://github.com/user-attachments/assets/0562d82a-a992-496f-9a05-5a6a2e0b8739)
+
 #### Features
 - List aliases, built-ins, commands, functions, and keywords.
 - Supports filtering by type (aliases, built-ins, commands, etc.).
